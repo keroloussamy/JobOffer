@@ -1,0 +1,59 @@
+﻿@model JobOffer.Models.Job
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobContent)
+        </dt>
+
+        <dd>
+            @*To convert the html code to its result and don't desplay as it is*@
+            @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.JobContent).ToString()))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobImage)
+        </dt>
+
+        <dd class="">
+            <img src="~/Uploads/@Html.DisplayFor(model => model.JobImage)" class="img-thumbnail" style="width:48px; height:48px;" />
+        </dd>
+
+    </dl>
+</div>
+
+@if (User.IsInRole("Searcher"))
+{
+    @Html.ActionLink("Apply", "Apply", "Home", new { JobId = Model.Id }, new { @class = "btn btn-success"})
+}
+else
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

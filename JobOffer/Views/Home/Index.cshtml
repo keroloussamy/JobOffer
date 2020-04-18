@@ -1,0 +1,24 @@
+﻿@model IEnumerable<JobOffer.Models.Category>
+@{
+    ViewBag.Title = "Home Page";
+    //Layout = "";
+}
+
+
+
+        <div class="row">
+            <h1 class="col-lg-6 col-sm-12 font-weight-bolder display-4 pl-5 pt-5 text-sm-center text-primary">Welcome to your professional community</h1>
+            <img src="~/Img/man.png" class="col-lg-6 col-sm-12 p-5"/>
+        </div>
+    
+
+    <div class="row">
+        <div class="col-6 jumbotron text-center bg-dark text-white border">
+        <h2>Post your job for millions of people</h2>
+        @Html.ActionLink("Post a Job", "Create", "Jobs", null, new { @class = "btn btn-outline-primary rounded-circle p-4 mt-3 font-weight-bold" })
+    </div>
+    <div class="col-6 jumbotron text-center bg-dark text-white border">
+        <h1>Find Your Job Now</h1>
+        @Html.ActionLink("Find a Job", "indexForAll", "Categories", null, new { @class = "btn btn-outline-primary rounded-circle p-4 mt-3 font-weight-bold" })
+    </div>
+</div>

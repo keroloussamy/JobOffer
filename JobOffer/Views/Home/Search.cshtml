@@ -1,0 +1,28 @@
+﻿@model IEnumerable<JobOffer.Models.Job>
+
+@{
+    ViewBag.Title = "Search";
+}
+    <div class="container">
+       
+            <h4>Search result</h4>
+                
+                
+                <div class="row">
+                    @foreach (var Jobs in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card" style="width:300px; margin:20px;">
+                                <img class="card-img-top" src="~/Uploads/@Jobs.JobImage" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                    <h4 class="card-title">@Jobs.JobTitle</h4>
+                                    <p class="card-text">@Jobs.JobContent</p>
+                                    @Html.ActionLink("More Info", "Details", "Jobs", new { id = Jobs.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            
+        
+    </div>
