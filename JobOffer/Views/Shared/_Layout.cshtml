@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
           integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-md navbar-light shadow-sm p-2 mb-4 bg-white">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
-            <img src="bird.jpg" alt="logo" style="width:40px;">
+            <img src="~/Img/logo.png" alt="logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#"> About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Contact Us</a>
+                    @Html.ActionLink(" Contact Us", "Contact", "Home", null, new { @class = "nav-link" })
                 </li>
 
             </ul>
@@ -60,9 +60,9 @@
     </nav>
 
     <div class="container">
-
-        @RenderBody()
-
+        <div class="render">
+            @RenderBody()
+        </div>
         <hr />
         <!-- Grid row -->
         <div class="row d-flex align-items-center">

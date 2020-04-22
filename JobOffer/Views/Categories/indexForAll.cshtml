@@ -21,7 +21,7 @@
                             <img class="card-img-top" src="~/Uploads/@Jobs.JobImage" alt="Card image" style="width:100%">
                             <div class="card-body">
                                 <h4 class="card-title">@Jobs.JobTitle</h4>
-                                <p class="card-text">@Jobs.JobContent</p>
+                                <p class="card-text">@Html.Raw(HttpUtility.HtmlDecode((Jobs.JobContent).ToString()))</p>
                                 @Html.ActionLink("More Info", "Details", "Jobs", new { id = Jobs.Id }, new { @class = "btn btn-primary" })
                             </div>
                         </div>

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -92,9 +94,29 @@ namespace JobOffer.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                var mail = new MailMessage();
+                var loginInfo = new NetworkCredential("keroloussamy@gmail.com", "KeRo12#$34");
+                mail.From = new MailAddress(contact.Email);
+                mail.To.Add(new MailAddress("keroloussamy@gmail.com"));
+                mail.Subject = contact.Subject;
+                mail.Body = contact.Message;
+
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.EnableSsl = true;
+                smtpClient.Credentials = loginInfo;
+                smtpClient.Send(mail);
+                return RedirectToAction("Index");
+            }
+            return View(contact);
         }
     }
 }

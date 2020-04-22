@@ -25,7 +25,7 @@ namespace JobOffer.Controllers
         }
 
         // GET: Jobs/Details/5
-        [Authorize(Roles = "Publisher, Searcher, Admins")]
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

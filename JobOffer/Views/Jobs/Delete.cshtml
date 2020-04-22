@@ -32,7 +32,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.JobContent)
+           
+                @*To convert the html code to its result and don't desplay as it is*@
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.JobContent).ToString()))
+            
         </dd>
 
         <dt>
